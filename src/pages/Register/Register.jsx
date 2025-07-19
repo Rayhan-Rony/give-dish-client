@@ -12,6 +12,7 @@ import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import useLocationInfo from "../../hooks/useLocationInfo";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -20,6 +21,7 @@ const Register = () => {
   const [fileName, setFileName] = useState("Choose a file");
   const [profilePic, setProfilePic] = useState("");
   const { navigate, from } = useLocationInfo();
+  const axiosPublic = useAxiosPublic();
 
   const handleFileChange = async (e) => {
     // upload profile pic to imageBB
@@ -61,17 +63,22 @@ const Register = () => {
         photoURL: profilePic,
       });
       console.log("User registered successfully:", currentUser);
-      //ToDo Optional: redirect or toast
+      //  redirect
       navigate(from);
       // Todo send user info in db
+      const userInfo = {
+        email: data.email,
+        name: data.name,
+        role: "user",
+        photo: profilePic,
+        created_at: new Date().toISOString(),
+      };
+      const userRes = await axiosPublic.post("/users", userInfo);
+      console.log(userRes);
     } catch (err) {
       console.error("Registration error:", err.message);
       //Todo show toast or error
     }
-
-    // TODO: implement actual registration logic
-    // console.log(data);
-    // createUser()
   };
 
   return (

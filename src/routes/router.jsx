@@ -8,6 +8,9 @@ import { Component } from "react";
 import DonationDetails from "../pages/DonationDetails/DonationDetails";
 import PrivateRoute from "./PrivateRoute";
 
+import DashboardLayout from "../layouts/DashboardLayout";
+import RestaurantProfile from "../pages/Dashboard/RestaurantProfile/RestaurantProfile";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -38,6 +41,16 @@ const router = createBrowserRouter([
       {
         path: "/register",
         Component: Register,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    Component: DashboardLayout,
+    children: [
+      {
+        path: "restaurantProfile",
+        Component: RestaurantProfile,
       },
     ],
   },
