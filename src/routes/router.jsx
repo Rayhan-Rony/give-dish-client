@@ -6,6 +6,7 @@ import AuthLayout from "../layouts/AuthLayout";
 import Register from "../pages/Register/Register";
 import { Component } from "react";
 import DonationDetails from "../pages/DonationDetails/DonationDetails";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,11 @@ const router = createBrowserRouter([
       },
       {
         path: "donations/:id",
-        Component: DonationDetails,
+        element: (
+          <PrivateRoute>
+            <DonationDetails></DonationDetails>
+          </PrivateRoute>
+        ),
       },
     ],
   },

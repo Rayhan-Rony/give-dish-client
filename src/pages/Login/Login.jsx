@@ -6,15 +6,17 @@ import Lottie from "lottie-react";
 import loginAnim from "../../assets/LogInLottie.json";
 
 import GiveDishLogo from "../../components/GiveDishLogo/GiveDishLogo";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import useLocationInfo from "../../hooks/useLocationInfo";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate();
   const { signIn } = useAuth();
+  const { navigate, from } = useLocationInfo();
+  console.log(from);
 
   const {
     register,
@@ -28,8 +30,9 @@ const Login = () => {
     try {
       const userCredential = await signIn(email, password);
       console.log(userCredential);
-      // ToDo: Redirecting to user destiny page
-      navigate("/");
+      // Redirecting to user destiny page
+
+      navigate(from);
     } catch (err) {
       console.log(err.message);
       // Show SweetAlert2 error in the ui
@@ -39,6 +42,7 @@ const Login = () => {
         text: err.message || "Invalid email or password",
         confirmButtonColor: "#d33",
       });
+      navigate("/login");
     }
   };
 
@@ -110,6 +114,7 @@ const Login = () => {
             Don’t have an account?{" "}
             <Link
               to="/register"
+              state={from}
               className="text-primary font-semibold hover:underline"
             >
               Register here

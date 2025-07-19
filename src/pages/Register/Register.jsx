@@ -11,6 +11,7 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
+import useLocationInfo from "../../hooks/useLocationInfo";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -18,6 +19,7 @@ const Register = () => {
   const { createUser, updateUserProfile } = useAuth();
   const [fileName, setFileName] = useState("Choose a file");
   const [profilePic, setProfilePic] = useState("");
+  const { navigate, from } = useLocationInfo();
 
   const handleFileChange = async (e) => {
     // upload profile pic to imageBB
@@ -60,6 +62,7 @@ const Register = () => {
       });
       console.log("User registered successfully:", currentUser);
       //ToDo Optional: redirect or toast
+      navigate(from);
       // Todo send user info in db
     } catch (err) {
       console.error("Registration error:", err.message);

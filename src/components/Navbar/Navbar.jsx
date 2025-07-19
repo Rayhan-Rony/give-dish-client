@@ -2,10 +2,20 @@ import { NavLink } from "react-router";
 import GiveDishLogo from "../GiveDishLogo/GiveDishLogo";
 import { AuthContext } from "../../contexts/AuthContext";
 import useAuth from "../../hooks/useAuth";
+import { FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
   console.log(user?.photoURL);
+  const handleLogOut = () => {
+    logOut()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const links = (
     <>
       <li>
@@ -68,8 +78,18 @@ const Navbar = () => {
             role="button"
             className="btn btn-ghost btn-circle avatar"
           >
-            <div className="w-10 rounded-full">
-              <img alt="Tailwind CSS Navbar component" src={user?.photoURL} />
+            <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center bg-gray-200 text-gray-500">
+              {user?.photoURL ? (
+                <img
+                  alt="User Profile"
+                  src={user.photoURL}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <>
+                  <FaUserCircle className="w-full h-full object-cover" />
+                </>
+              )}
             </div>
           </div>
           <ul
@@ -85,7 +105,7 @@ const Navbar = () => {
             <li>
               <a>Settings</a>
             </li>
-            <li>
+            <li onClick={handleLogOut}>
               <a>Logout</a>
             </li>
           </ul>
