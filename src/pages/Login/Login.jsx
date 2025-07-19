@@ -6,11 +6,15 @@ import Lottie from "lottie-react";
 import loginAnim from "../../assets/LogInLottie.json";
 
 import GiveDishLogo from "../../components/GiveDishLogo/GiveDishLogo";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  const { signIn } = useAuth();
 
   const {
     register,
@@ -18,13 +22,28 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log("Login Data:", data);
-    // TODO: add login logic here
+    const { email, password } = data;
+    try {
+      const userCredential = await signIn(email, password);
+      console.log(userCredential);
+      // ToDo: Redirecting to user destiny page
+      navigate("/");
+    } catch (err) {
+      console.log(err.message);
+      // Show SweetAlert2 error in the ui
+      Swal.fire({
+        icon: "error",
+        title: "Login Failed",
+        text: err.message || "Invalid email or password",
+        confirmButtonColor: "#d33",
+      });
+    }
   };
 
   return (
-    <div className="min-h-screen  bg-[#060606] text-white flex flex-col-reverse md:flex-row items-center justify-center">
+    <div className="min-h-screen  bg-accent text-white flex flex-col-reverse md:flex-row items-center justify-center">
       {/* Left - Login Form */}
       <div className="w-full md:w-1/2 p-8 md:p-16 ">
         <div className="max-w-md mx-auto">

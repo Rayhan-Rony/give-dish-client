@@ -1,8 +1,11 @@
-import React from "react";
 import { NavLink } from "react-router";
 import GiveDishLogo from "../GiveDishLogo/GiveDishLogo";
+import { AuthContext } from "../../contexts/AuthContext";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
+  const { user } = useAuth();
+  console.log(user?.photoURL);
   const links = (
     <>
       <li>
@@ -20,7 +23,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="bg-[#060606]">
+    <div className="bg-accent">
       <div className="navbar  shadow-sm max-w-11/12 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -66,10 +69,7 @@ const Navbar = () => {
             className="btn btn-ghost btn-circle avatar"
           >
             <div className="w-10 rounded-full">
-              <img
-                alt="Tailwind CSS Navbar component"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-              />
+              <img alt="Tailwind CSS Navbar component" src={user?.photoURL} />
             </div>
           </div>
           <ul
