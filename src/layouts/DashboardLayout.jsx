@@ -6,14 +6,20 @@ import {
   FaSignOutAlt,
   FaBars,
   FaTimes,
+  FaHandshake,
+  FaHeart,
+  FaReceipt,
 } from "react-icons/fa";
+import {} from "react-icons/fa";
+
 import GiveDishLogo from "../components/GiveDishLogo/GiveDishLogo";
 import { Link, Outlet } from "react-router";
 import useUserRole from "../hooks/useUserRole";
+import LoadingPage from "../components/LoadingPage/LoadingPage";
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const { role } = useUserRole();
+  const { role, isLoading } = useUserRole();
   console.log(role);
 
   return (
@@ -49,6 +55,43 @@ const DashboardLayout = () => {
               <FaHome /> Home
             </Link>
           </li>
+          {/* user Dashboard Link  */}
+          {role === "user" && (
+            <>
+              <li>
+                <Link
+                  to="/dashboard/myProfile"
+                  className="flex items-center gap-3 hover:text-primary transition"
+                >
+                  <FaUser /> My Profile
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/requestCharityRole"
+                  className="flex items-center gap-3 hover:text-primary transition"
+                >
+                  <FaHandshake /> Request Charity Role
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/favourites"
+                  className="flex items-center gap-3 hover:text-primary transition"
+                >
+                  <FaHeart /> Favourites
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/transactions"
+                  className="flex items-center gap-3 hover:text-primary transition"
+                >
+                  <FaReceipt /> Transaction History
+                </Link>
+              </li>
+            </>
+          )}
           {/* restaurant Dashboard link */}
           {role === "restaurant" && (
             <>

@@ -13,6 +13,7 @@ import RestaurantProfile from "../pages/Dashboard/RestaurantProfile/RestaurantPr
 import AddDonation from "../pages/Dashboard/AddDonation/AddDonation";
 import MyDonations from "../pages/Dashboard/MyDonations/MyDonations";
 import UpdateDonations from "../pages/Dashboard/MyDonations/UpdateDonations";
+import MyProfile from "../pages/Dashboard/MyProfile/MyProfile";
 
 const router = createBrowserRouter([
   {
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
       {
         path: "updateDonation/:id",
         Component: UpdateDonations,
+      },
+      {
+        path: "myProfile",
+        Component: MyProfile,
       },
     ],
   },
