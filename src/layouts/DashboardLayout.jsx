@@ -9,9 +9,12 @@ import {
 } from "react-icons/fa";
 import GiveDishLogo from "../components/GiveDishLogo/GiveDishLogo";
 import { Link, Outlet } from "react-router";
+import useUserRole from "../hooks/useUserRole";
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { role } = useUserRole();
+  console.log(role);
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-black text-white">
@@ -46,38 +49,44 @@ const DashboardLayout = () => {
               <FaHome /> Home
             </Link>
           </li>
-          <li>
-            <Link
-              to="/dashboard/restaurantProfile"
-              className="flex items-center gap-3 hover:text-primary transition"
-            >
-              <FaUser /> Restaurant Profile
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/dashboard/addDonation"
-              className="flex items-center gap-3 hover:text-primary transition"
-            >
-              <FaUtensils /> Add Donation
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/dashboard/myDonations"
-              className="flex items-center gap-3 hover:text-primary transition"
-            >
-              <FaUtensils /> My Donations
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/dashboard/requested-donations"
-              className="flex items-center gap-3 hover:text-primary transition"
-            >
-              <FaUtensils /> Requested Donations
-            </Link>
-          </li>
+          {/* restaurant Dashboard link */}
+          {role === "restaurant" && (
+            <>
+              {" "}
+              <li>
+                <Link
+                  to="/dashboard/restaurantProfile"
+                  className="flex items-center gap-3 hover:text-primary transition"
+                >
+                  <FaUser /> Restaurant Profile
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/addDonation"
+                  className="flex items-center gap-3 hover:text-primary transition"
+                >
+                  <FaUtensils /> Add Donation
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/myDonations"
+                  className="flex items-center gap-3 hover:text-primary transition"
+                >
+                  <FaUtensils /> My Donations
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/requested-donations"
+                  className="flex items-center gap-3 hover:text-primary transition"
+                >
+                  <FaUtensils /> Requested Donations
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
 
         <div className="mt-10">

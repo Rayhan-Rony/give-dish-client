@@ -13,6 +13,7 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import useLocationInfo from "../../hooks/useLocationInfo";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -77,7 +78,14 @@ const Register = () => {
       console.log(userRes);
     } catch (err) {
       console.error("Registration error:", err.message);
-      //Todo show toast or error
+
+      // Show SweetAlert2 error in the ui
+      Swal.fire({
+        icon: "error",
+        title: "Login Failed",
+        text: err.message || "Invalid email or password",
+        confirmButtonColor: "#d33",
+      });
     }
   };
 
