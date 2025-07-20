@@ -16,7 +16,7 @@ const DonationDetails = () => {
   const axiosSecure = useAxiosSecure(); // or just use axios
 
   const {
-    data: donation,
+    data: donation = [],
     isLoading,
     isError,
   } = useQuery({

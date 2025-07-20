@@ -9,15 +9,11 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const RestaurantProfile = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const axiosSecure = useAxiosSecure();
 
   // Load restaurant data using React Query
-  const {
-    data: restaurant = [],
-    isLoading,
-    error,
-  } = useQuery({
+  const { data: restaurant = [], isLoading } = useQuery({
     queryKey: ["restaurant", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/users?email=${user.email}`);
@@ -25,11 +21,11 @@ const RestaurantProfile = () => {
     },
     enabled: !!user?.email, // Only fetch when email is available
   });
-  if (isLoading) {
-    return <LoadingPage></LoadingPage>;
-  }
 
   const { name, email, role, photo, created_at } = restaurant;
+  if (isLoading || loading) {
+    return <LoadingPage></LoadingPage>;
+  }
 
   return (
     <div className="max-w-3xl mx-auto   rounded-2xl shadow-lg p-6 md:p-10 mt-10">
@@ -60,7 +56,16 @@ const RestaurantProfile = () => {
             <FaCalendarAlt className="text-yellow-400" />
             Registered on:{" "}
             <span className="font-medium">
-              {format(new Date(created_at), "MMMM dd, yyyy")}
+              {/* {format(new Date(created_at), "MMMM dd, yyyy")} */}
+              {restaurant?.created_at ? (
+                <span className="text-gray-400">
+                  {format(new Date(created_at), "PP")}
+                </span>
+              ) : (
+                <span className="text-gray-400">
+                  Joining date not available
+                </span>
+              )}
             </span>
           </p>
         </div>

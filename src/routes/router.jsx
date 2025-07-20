@@ -10,6 +10,9 @@ import PrivateRoute from "./PrivateRoute";
 
 import DashboardLayout from "../layouts/DashboardLayout";
 import RestaurantProfile from "../pages/Dashboard/RestaurantProfile/RestaurantProfile";
+import AddDonation from "../pages/Dashboard/AddDonation/AddDonation";
+import MyDonations from "../pages/Dashboard/MyDonations/MyDonations";
+import UpdateDonations from "../pages/Dashboard/MyDonations/UpdateDonations";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +54,18 @@ const router = createBrowserRouter([
       {
         path: "restaurantProfile",
         Component: RestaurantProfile,
+      },
+      {
+        path: "addDonation",
+        Component: AddDonation,
+      },
+      {
+        path: "myDonations",
+        Component: MyDonations,
+      },
+      {
+        path: "updateDonation/:id",
+        Component: UpdateDonations,
       },
     ],
   },
