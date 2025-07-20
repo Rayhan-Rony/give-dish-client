@@ -65,7 +65,7 @@ const Register = () => {
       console.log("User registered successfully:", currentUser);
       //  redirect
       navigate(from);
-      // Todo send user info in db
+      // send user info in db
       const userInfo = {
         email: data.email,
         name: data.name,
