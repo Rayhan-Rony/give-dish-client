@@ -74,6 +74,20 @@ const PaymentForm = () => {
     } else {
       if (result.paymentIntent.status === "succeeded") {
         console.log("payment Successful");
+
+        // save payment info to db
+        const paymentInfo = {
+          name: user.displayName,
+          email: user.email,
+          transactionId: result.paymentIntent.id,
+          amount: parseInt(25 * 100),
+          paymentMethod: result.paymentIntent.payment_method_types,
+          paid_At: new Date().toISOString(),
+          purpose: "Charity Role Request",
+        };
+        console.log(paymentInfo);
+        const paymentRes = await axiosSecure.post("/payments", paymentInfo);
+        console.log(paymentRes);
         Swal.fire({
           icon: "success",
           title: "Payment Successful",
