@@ -1,11 +1,14 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-
+import LoadingPage from "../../../components/LoadingPage/LoadingPage";
 import useAuth from "../../../hooks/useAuth";
 import { useNavigate } from "react-router";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const RequestCharityRole = () => {
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const {
     register,
     handleSubmit,
@@ -14,17 +17,46 @@ const RequestCharityRole = () => {
   const navigate = useNavigate();
   const fixedAmount = 25;
 
+  // Load user's existing role request
+  const { data, isLoading } = useQuery({
+    queryKey: ["roleRequest", user?.email],
+    queryFn: async () => {
+      const res = await axiosSecure.get(
+        `/roleRequests/check?email=${user.email}`
+      );
+      return res.data;
+    },
+    enabled: !!user?.email,
+  });
   const onSubmit = (data) => {
     const fullData = {
       ...data,
-      name: user?.name,
+      name: user?.displayName,
       email: user?.email,
       amount: fixedAmount,
     };
 
     // Redirect to payment page
-    navigate("/dashboard/payment");
+    navigate("/dashboard/payment", { state: fullData });
   };
+  if (isLoading) {
+    return <LoadingPage></LoadingPage>;
+  }
+  // If request exists, show message instead of form
+  console.log(data?.exists);
+  if (data?.exists) {
+    return (
+      <div className="text-center text-white mt-10">
+        <h2 className="text-2xl font-bold text-primary">
+          Request Already Exists
+        </h2>
+        <p className="mt-2">
+          You already have a role request that is{" "}
+          <span className="font-semibold capitalize">{data.status}</span>.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-xl mx-auto p-6 bg-accent rounded-lg shadow text-white">

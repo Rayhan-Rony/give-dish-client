@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { useLocation } from "react-router";
 
 const PaymentForm = () => {
   const stripe = useStripe();
@@ -10,6 +11,9 @@ const PaymentForm = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [error, setError] = useState("");
+
+  const location = useLocation();
+  console.log(location?.state);
 
   const handleSubmit = async (event) => {
     // Block native form submission.
@@ -88,6 +92,22 @@ const PaymentForm = () => {
         console.log(paymentInfo);
         const paymentRes = await axiosSecure.post("/payments", paymentInfo);
         console.log(paymentRes);
+
+        // save the role request as pending in db
+        const roleRequestInfo = {
+          email: user.email,
+          organization: location?.state.organization,
+          mission: location?.state.mission,
+          transactionId: result.paymentIntent.id,
+          status: "Pending",
+          request_at: new Date().toISOString(),
+        };
+        const roleRes = await axiosSecure.post(
+          "/roleRequests",
+          roleRequestInfo
+        );
+        console.log(roleRes);
+
         Swal.fire({
           icon: "success",
           title: "Payment Successful",
