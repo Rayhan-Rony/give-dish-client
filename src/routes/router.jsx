@@ -14,6 +14,8 @@ import AddDonation from "../pages/Dashboard/AddDonation/AddDonation";
 import MyDonations from "../pages/Dashboard/MyDonations/MyDonations";
 import UpdateDonations from "../pages/Dashboard/MyDonations/UpdateDonations";
 import MyProfile from "../pages/Dashboard/MyProfile/MyProfile";
+import RequestCharityRole from "../pages/Dashboard/RequestCharityRole/RequestCharityRole";
+import Payment from "../pages/Dashboard/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -71,6 +73,14 @@ const router = createBrowserRouter([
       {
         path: "myProfile",
         Component: MyProfile,
+      },
+      {
+        path: "requestCharityRole",
+        Component: RequestCharityRole,
+      },
+      {
+        path: "payment",
+        Component: Payment,
       },
     ],
   },
