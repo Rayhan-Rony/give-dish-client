@@ -76,7 +76,7 @@ const DashboardLayout = () => {
               </li>
               <li>
                 <Link
-                  to="/dashboard/favourites"
+                  to="/dashboard/favorites"
                   className="flex items-center gap-3 hover:text-primary transition"
                 >
                   <FaHeart /> Favourites

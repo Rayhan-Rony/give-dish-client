@@ -10,13 +10,16 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure"; // optional, else use axios directly
 import { useParams } from "react-router";
 import LoadingPage from "../../components/LoadingPage/LoadingPage";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const DonationDetails = () => {
+  const { user } = useAuth();
   const { id } = useParams();
   const axiosSecure = useAxiosSecure(); // or just use axios
 
   const {
-    data: donation = [],
+    data: donation = {},
     isLoading,
     isError,
   } = useQuery({
@@ -27,6 +30,7 @@ const DonationDetails = () => {
     },
     enabled: !!id, // ensures query runs only when ID exists
   });
+  // console.log(donation);
 
   if (isLoading) {
     return <LoadingPage></LoadingPage>;
@@ -39,6 +43,31 @@ const DonationDetails = () => {
       </p>
     );
   }
+
+  // save favourites post
+
+  const handleSaveToFavorites = async () => {
+    try {
+      const res = await axiosSecure.post("/favorites", {
+        userEmail: user.email,
+        donationId: donation._id,
+        savedAt: new Date().toISOString(),
+      });
+      if (res.data.insertedId) {
+        Swal.fire("Saved!", "Donation added to your favorites.", "success");
+      }
+    } catch (error) {
+      if (error.response?.status === 409) {
+        Swal.fire(
+          "Already Saved",
+          "This donation is already in your favorites.",
+          "info"
+        );
+      } else {
+        Swal.fire("Error", "Something went wrong.", "error");
+      }
+    }
+  };
 
   return (
     <div className="min-h-screen">
@@ -97,6 +126,15 @@ const DonationDetails = () => {
               </p>
             </div>
           </div>
+        </div>
+        {/* Save to Favorites Button */}
+        <div className="flex justify-end mt-6">
+          <button
+            onClick={handleSaveToFavorites}
+            className="btn btn-outline btn-primary"
+          >
+            ❤️ Save to Favorites
+          </button>
         </div>
       </div>
     </div>
