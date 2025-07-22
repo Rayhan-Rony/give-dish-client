@@ -9,6 +9,7 @@ import {
   FaHandshake,
   FaHeart,
   FaReceipt,
+  FaStar,
 } from "react-icons/fa";
 import {} from "react-icons/fa";
 
@@ -80,6 +81,14 @@ const DashboardLayout = () => {
                   className="flex items-center gap-3 hover:text-primary transition"
                 >
                   <FaHeart /> Favourites
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/myReviews"
+                  className="flex items-center gap-3 hover:text-primary transition"
+                >
+                  <FaStar /> My Reviews
                 </Link>
               </li>
               <li>

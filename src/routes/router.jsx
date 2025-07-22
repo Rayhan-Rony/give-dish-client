@@ -17,6 +17,7 @@ import MyProfile from "../pages/Dashboard/MyProfile/MyProfile";
 import RequestCharityRole from "../pages/Dashboard/RequestCharityRole/RequestCharityRole";
 import Payment from "../pages/Dashboard/Payment/Payment";
 import Favorites from "../pages/Dashboard/Favorites/Favorites";
+import MyReviews from "../pages/Dashboard/MyReviews/MyReviews";
 
 const router = createBrowserRouter([
   {
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
       {
         path: "favorites",
         Component: Favorites,
+      },
+      {
+        path: "myReviews",
+        Component: MyReviews,
       },
     ],
   },
