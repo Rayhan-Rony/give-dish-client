@@ -10,6 +10,10 @@ import {
   FaHeart,
   FaReceipt,
   FaStar,
+  FaHandHoldingHeart,
+  FaTruck,
+  FaBoxOpen,
+  FaFileInvoiceDollar,
 } from "react-icons/fa";
 import {} from "react-icons/fa";
 
@@ -135,6 +139,50 @@ const DashboardLayout = () => {
                   className="flex items-center gap-3 hover:text-primary transition"
                 >
                   <FaUtensils /> Requested Donations
+                </Link>
+              </li>
+            </>
+          )}
+          {role === "charity" && (
+            <>
+              <li>
+                <Link
+                  to="/dashboard/charityProfile"
+                  className="flex items-center gap-3 hover:text-primary transition"
+                >
+                  <FaUser /> Charity Profile
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/myRequests"
+                  className="flex items-center gap-3 hover:text-primary transition"
+                >
+                  <FaHandHoldingHeart /> My Requests
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/myPickups"
+                  className="flex items-center gap-3 hover:text-primary transition"
+                >
+                  <FaTruck /> My Pickups
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/received-donations"
+                  className="flex items-center gap-3 hover:text-primary transition"
+                >
+                  <FaBoxOpen /> Received Donations
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/transaction-history"
+                  className="flex items-center gap-3 hover:text-primary transition"
+                >
+                  <FaFileInvoiceDollar /> Transaction History
                 </Link>
               </li>
             </>

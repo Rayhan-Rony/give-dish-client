@@ -19,6 +19,7 @@ import Payment from "../pages/Dashboard/Payment/Payment";
 import Favorites from "../pages/Dashboard/Favorites/Favorites";
 import MyReviews from "../pages/Dashboard/MyReviews/MyReviews";
 import TransactionHistory from "../pages/Dashboard/TransactionsHistory/TransactionsHistory";
+import CharityProfile from "../pages/Dashboard/CharityProfile/CharityProfile";
 
 const router = createBrowserRouter([
   {
@@ -96,6 +97,10 @@ const router = createBrowserRouter([
       {
         path: "transactions",
         Component: TransactionHistory,
+      },
+      {
+        path: "charityProfile",
+        Component: CharityProfile,
       },
     ],
   },
