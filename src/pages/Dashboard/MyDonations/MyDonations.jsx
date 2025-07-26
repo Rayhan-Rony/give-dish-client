@@ -1,7 +1,7 @@
 // src/pages/Dashboard/MyDonations.jsx
 import React from "react";
 import { QueryClient, useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import { useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 
 import { FaEdit, FaTrash } from "react-icons/fa";
@@ -13,6 +13,7 @@ import { Link } from "react-router";
 const MyDonations = () => {
   const { user, loading } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const queryClient = useQueryClient();
 
   const { data: donations = [], isLoading } = useQuery({
     queryKey: ["my-donations", user?.email],
@@ -23,23 +24,23 @@ const MyDonations = () => {
     enabled: !!user?.email,
   });
 
-  // const handleDelete = async (id) => {
-  //   const confirm = await Swal.fire({
-  //     title: "Are you sure?",
-  //     text: "You won't be able to revert this!",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonText: "Yes, delete it!",
-  //   });
+  const handleDelete = async (id) => {
+    const confirm = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+    });
 
-  //   if (confirm.isConfirmed) {
-  //     const res = await axios.delete(`/donations/${id}`);
-  //     if (res.data.deletedCount > 0) {
-  //       Swal.fire("Deleted!", "Your donation has been removed.", "success");
-  //       QueryClient.invalidateQueries(["my-donations"]);
-  //     }
-  //   }
-  // };
+    if (confirm.isConfirmed) {
+      const res = await axiosSecure.delete(`/donations/${id}`);
+      if (res.data.deletedCount > 0) {
+        Swal.fire("Deleted!", "Your donation has been removed.", "success");
+        queryClient.invalidateQueries(["my-donations"]);
+      }
+    }
+  };
 
   if (isLoading || loading) return <LoadingPage></LoadingPage>;
 
@@ -106,7 +107,7 @@ const MyDonations = () => {
                 </Link>
               )}
               <button
-                // onClick={() => handleDelete(donation._id)}
+                onClick={() => handleDelete(donation._id)}
                 className="text-red-600 hover:underline flex items-center gap-1"
               >
                 <FaTrash /> Delete
