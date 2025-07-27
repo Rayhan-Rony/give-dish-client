@@ -24,6 +24,7 @@ import MyRequests from "../pages/Dashboard/MyRequests/MyRequests";
 import MyPickups from "../pages/Dashboard/MyPickups/MyPickups";
 import RequestedDonations from "../pages/Dashboard/RequestedDonations/RequestedDonations";
 import ReceivedDonations from "../pages/Dashboard/ReceivedDonations/ReceivedDonations";
+import AdminProfile from "../pages/Dashboard/AdminProfile/AdminProfile";
 
 const router = createBrowserRouter([
   {
@@ -125,6 +126,10 @@ const router = createBrowserRouter([
       {
         path: "transactionsHistory",
         Component: TransactionHistory,
+      },
+      {
+        path: "adminProfile",
+        Component: AdminProfile,
       },
     ],
   },

@@ -14,6 +14,10 @@ import {
   FaTruck,
   FaBoxOpen,
   FaFileInvoiceDollar,
+  FaUserShield,
+  FaUsersCog,
+  FaUserCheck,
+  FaClipboardList,
 } from "react-icons/fa";
 import {} from "react-icons/fa";
 
@@ -183,6 +187,63 @@ const DashboardLayout = () => {
                   className="flex items-center gap-3 hover:text-primary transition"
                 >
                   <FaFileInvoiceDollar /> Transaction History
+                </Link>
+              </li>
+            </>
+          )}
+          {role === "admin" && (
+            <>
+              <li>
+                <Link
+                  to="/dashboard/adminProfile"
+                  className="flex items-center gap-3 hover:text-primary transition"
+                >
+                  <FaUserShield /> Admin Profile
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/dashboard/manageDonations"
+                  className="flex items-center gap-3 hover:text-primary transition"
+                >
+                  <FaUtensils /> Manage Donations
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/dashboard/manageUsers"
+                  className="flex items-center gap-3 hover:text-primary transition"
+                >
+                  <FaUsersCog /> Manage Users
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/dashboard/manageRoleRequests"
+                  className="flex items-center gap-3 hover:text-primary transition"
+                >
+                  <FaUserCheck /> Manage Role Requests
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/dashboard/manageRequests"
+                  className="flex items-center gap-3 hover:text-primary transition"
+                >
+                  <FaClipboardList /> Manage Requests
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/dashboard/featureDonations"
+                  className="flex items-center gap-3 hover:text-primary transition"
+                >
+                  <FaStar /> Feature Donations
                 </Link>
               </li>
             </>
