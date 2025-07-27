@@ -71,7 +71,7 @@ const MyPickups = () => {
               <h3 className="text-lg font-bold mb-1">{pickup.donationTitle}</h3>
               <p>
                 <span className="font-semibold">Restaurant:</span>{" "}
-                {pickup.restaurantName} {pickup.location}
+                {pickup.restaurantName} ,{pickup.location}
               </p>
               <p>
                 <span className="font-semibold">Food Type:</span>{" "}
@@ -94,7 +94,7 @@ const MyPickups = () => {
                       : "badge-warning"
                   }`}
                 >
-                  {pickup.status}
+                  {pickup.status === "Accepted" ? "Assigned" : pickup.status}
                 </span>
               </p>
               {pickup.status === "Accepted" && (

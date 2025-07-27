@@ -171,7 +171,7 @@ const DashboardLayout = () => {
               </li>
               <li>
                 <Link
-                  to="/dashboard/received-donations"
+                  to="/dashboard/receivedDonations"
                   className="flex items-center gap-3 hover:text-primary transition"
                 >
                   <FaBoxOpen /> Received Donations
@@ -179,7 +179,7 @@ const DashboardLayout = () => {
               </li>
               <li>
                 <Link
-                  to="/dashboard/transaction-history"
+                  to="/dashboard/transactionsHistory"
                   className="flex items-center gap-3 hover:text-primary transition"
                 >
                   <FaFileInvoiceDollar /> Transaction History
