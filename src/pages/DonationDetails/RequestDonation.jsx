@@ -47,6 +47,8 @@ const RequestDonation = ({ donation }) => {
                   donationId: donation._id,
                   donationTitle: donation.title,
                   restaurantName: donation.restaurant,
+                  restaurantEmail: donation.email,
+                  location: donation.location,
                   foodType: donation.type,
                   quantity: donation.quantity,
                   charityName: user.displayName,

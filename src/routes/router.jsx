@@ -21,6 +21,8 @@ import MyReviews from "../pages/Dashboard/MyReviews/MyReviews";
 import TransactionHistory from "../pages/Dashboard/TransactionsHistory/TransactionsHistory";
 import CharityProfile from "../pages/Dashboard/CharityProfile/CharityProfile";
 import MyRequests from "../pages/Dashboard/MyRequests/MyRequests";
+import MyPickups from "../pages/Dashboard/MyPickups/MyPickups";
+import RequestedDonations from "../pages/Dashboard/RequestedDonations/RequestedDonations";
 
 const router = createBrowserRouter([
   {
@@ -106,6 +108,14 @@ const router = createBrowserRouter([
       {
         path: "myRequests",
         Component: MyRequests,
+      },
+      {
+        path: "myPickups",
+        Component: MyPickups,
+      },
+      {
+        path: "requestedDonations",
+        Component: RequestedDonations,
       },
     ],
   },

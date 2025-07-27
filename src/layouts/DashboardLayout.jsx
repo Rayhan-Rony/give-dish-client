@@ -135,7 +135,7 @@ const DashboardLayout = () => {
               </li>
               <li>
                 <Link
-                  to="/dashboard/requested-donations"
+                  to="/dashboard/requestedDonations"
                   className="flex items-center gap-3 hover:text-primary transition"
                 >
                   <FaUtensils /> Requested Donations
