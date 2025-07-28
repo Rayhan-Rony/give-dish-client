@@ -29,6 +29,7 @@ import ManageDonations from "../pages/Dashboard/ManageDonations/ManageDonations"
 import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
 import ManageRoleRequests from "../pages/Dashboard/ManageRoleRequests/ManageRoleRequests";
 import ManageRequests from "../pages/Dashboard/ManageRequests/ManageRequests";
+import FeatureDonations from "../pages/Dashboard/FeatureDonations/FeatureDonations";
 
 const router = createBrowserRouter([
   {
@@ -150,6 +151,10 @@ const router = createBrowserRouter([
       {
         path: "manageRequests",
         Component: ManageRequests,
+      },
+      {
+        path: "featureDonations",
+        Component: FeatureDonations,
       },
     ],
   },
