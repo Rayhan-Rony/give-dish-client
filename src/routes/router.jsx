@@ -25,6 +25,8 @@ import MyPickups from "../pages/Dashboard/MyPickups/MyPickups";
 import RequestedDonations from "../pages/Dashboard/RequestedDonations/RequestedDonations";
 import ReceivedDonations from "../pages/Dashboard/ReceivedDonations/ReceivedDonations";
 import AdminProfile from "../pages/Dashboard/AdminProfile/AdminProfile";
+import ManageDonations from "../pages/Dashboard/ManageDonations/ManageDonations";
+import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
 
 const router = createBrowserRouter([
   {
@@ -130,6 +132,14 @@ const router = createBrowserRouter([
       {
         path: "adminProfile",
         Component: AdminProfile,
+      },
+      {
+        path: "manageDonations",
+        Component: ManageDonations,
+      },
+      {
+        path: "manageUsers",
+        Component: ManageUsers,
       },
     ],
   },
