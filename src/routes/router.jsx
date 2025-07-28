@@ -30,11 +30,13 @@ import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
 import ManageRoleRequests from "../pages/Dashboard/ManageRoleRequests/ManageRoleRequests";
 import ManageRequests from "../pages/Dashboard/ManageRequests/ManageRequests";
 import FeatureDonations from "../pages/Dashboard/FeatureDonations/FeatureDonations";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: RootLayout,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -53,6 +55,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     Component: AuthLayout,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/login",
@@ -67,6 +70,7 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     Component: DashboardLayout,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "restaurantProfile",
@@ -157,6 +161,10 @@ const router = createBrowserRouter([
         Component: FeatureDonations,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <ErrorPage />, // catch-all for undefined routes
   },
 ]);
 
