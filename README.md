@@ -1,12 +1,49 @@
-# React + Vite
+# 🍱 Give Dish - Food Donation and Waste Reduction Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Site URL:** [https://give-dish.web.app](https://give-dish.web.app)
 
-Currently, two official plugins are available:
+**Admin Login Info:**
+- **Username / Email:** admin@givedish.com
+- **Password:** admin1234
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 📌 Project Overview
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Give Dish** is a full-featured MERN-stack web platform designed to reduce food waste by connecting **restaurants**, **charities**, and **general users**. It enables restaurants to donate surplus food, and verified charities to request and pick up donations. Admins have powerful tools to manage roles, donations, and featured content.
+
+---
+
+## 🌟 Key Features
+
+- 🔐 **Secure Authentication** using Firebase for all users.
+- 👨‍🍳 **Restaurant Dashboard** to add, update, and delete food donations.
+- 🏥 **Charity Role Requests** with Stripe one-time payment and admin approval.
+- 🛒 **Charity Dashboard** for requesting and tracking food donations.
+- 💳 **Stripe Integration** for charity role verification payments.
+- ✅ **Donation Approval System** for admins to verify restaurant submissions.
+- 🌟 **Feature Donations** to highlight important or appealing donations on the homepage.
+- 🧾 **Transaction History** tracking all Stripe payments made by users.
+- 💖 **Favorites System** where users can save favorite donations for quick access.
+- 📝 **Review System** for users to post and view ratings of donations.
+- 📥 **Donation Request Management** with ability to approve, reject, or delete requests.
+- 👨‍💼 **Admin Panel** to manage users, donations, role requests, and reviews.
+- ❌ **SweetAlert2 Notifications** for approvals, rejections, errors, and confirmations.
+- 🧭 **Custom 404 Page** for unmatched routes and navigation errors.
+
+---
+
+## ⚙️ Technologies Used
+
+- **Frontend:** React, Tailwind CSS, DaisyUI, React Router  
+- **Backend:** Node.js, Express.js, MongoDB  
+- **Authentication:** Firebase Auth  
+- **Payments:** Stripe  
+- **Notifications & Modals:** SweetAlert2  
+- **Icons:** React Icons
+
+---
+
+## 📧 Contact
+
+For any issues or suggestions, feel free to open an issue or contact the project maintainer at **admin@givedish.com**.
