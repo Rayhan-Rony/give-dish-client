@@ -9,6 +9,7 @@ import {
   FaHandsHelping,
 } from "react-icons/fa";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import LoadingPage from "../../../components/LoadingPage/LoadingPage";
 
 const ManageUsers = () => {
   const queryClient = useQueryClient();
@@ -71,7 +72,7 @@ const ManageUsers = () => {
     });
   };
 
-  if (isLoading) return <div>Loading users...</div>;
+  if (isLoading) return <LoadingPage></LoadingPage>;
 
   return (
     <div className="overflow-x-auto p-6">

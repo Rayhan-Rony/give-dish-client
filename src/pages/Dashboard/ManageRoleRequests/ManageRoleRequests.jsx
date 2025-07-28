@@ -3,6 +3,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import LoadingPage from "../../../components/LoadingPage/LoadingPage";
 
 const ManageRoleRequests = () => {
   const queryClient = useQueryClient();
@@ -79,7 +80,7 @@ const ManageRoleRequests = () => {
     });
   };
 
-  if (isLoading) return <p>Loading role requests...</p>;
+  if (isLoading) return <LoadingPage></LoadingPage>;
 
   return (
     <div className="p-6 overflow-x-auto">
