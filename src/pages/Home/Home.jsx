@@ -3,6 +3,7 @@ import Banner from "../../components/Banner/Banner";
 import FeaturedDonations from "./FeaturedDonations";
 import ImpactStats from "./ImpactStats";
 import CommunityStories from "./CommunityStories";
+import LatestCharityRequests from "./LatestCharityRequests";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <FeaturedDonations></FeaturedDonations>
       <ImpactStats></ImpactStats>
       <CommunityStories></CommunityStories>
+      <LatestCharityRequests></LatestCharityRequests>
     </div>
   );
 };

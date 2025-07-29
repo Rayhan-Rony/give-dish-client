@@ -94,6 +94,7 @@ const PaymentForm = () => {
         console.log(paymentRes);
 
         // save the role request as pending in db
+        console.log(location?.state);
         const roleRequestInfo = {
           name: user.displayName,
           email: user.email,
