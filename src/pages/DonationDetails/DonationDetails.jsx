@@ -21,6 +21,7 @@ import RequestDonation from "./RequestDonation";
 
 const DonationDetails = () => {
   const { role } = useUserRole();
+  console.log(role);
   const { user } = useAuth();
   const { id } = useParams();
   const axiosSecure = useAxiosSecure(); // or just use axios

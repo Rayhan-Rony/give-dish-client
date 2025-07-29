@@ -52,6 +52,7 @@ const RequestDonation = ({ donation }) => {
                   foodType: donation.type,
                   quantity: donation.quantity,
                   charityName: user.displayName,
+                  charityImage: user.photoURL,
                   charityEmail: user.email,
                   description: form.description.value,
                   pickupTime: form.pickupTime.value,

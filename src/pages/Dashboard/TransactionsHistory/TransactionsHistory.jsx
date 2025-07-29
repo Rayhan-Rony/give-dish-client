@@ -38,7 +38,7 @@ const TransactionHistory = () => {
     <div className="p-4 md:p-8">
       <h2 className="text-2xl font-semibold mb-6">Transaction History</h2>
       <div className="w-full overflow-x-auto">
-        <table className="table table-zebra min-w-[700px]">
+        <table className="table  min-w-[700px]">
           <thead className="bg-base-200">
             <tr>
               <th>#</th>
