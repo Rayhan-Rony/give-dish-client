@@ -105,6 +105,9 @@ const AllDonations = () => {
               <p className="text-sm text-gray-600 mb-1">
                 <strong>Status:</strong> {donation.status}
               </p>
+              <p className="text-sm text-gray-600 mb-1">
+                <strong>Verification Status:</strong> {donation.vStatus}
+              </p>
               <p className="text-sm text-gray-600 mb-4">
                 <strong>Quantity:</strong> {donation.quantity}
               </p>

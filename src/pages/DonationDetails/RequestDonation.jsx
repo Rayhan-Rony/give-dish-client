@@ -62,6 +62,11 @@ const RequestDonation = ({ donation }) => {
                 try {
                   const res = await axiosSecure.post("/requests", request);
                   if (res.data.insertedId) {
+                    const sendStatus = { status: "Requested" };
+                    const result = await axiosSecure.patch(
+                      `/donations/status/update/${donation._id}`,
+                      sendStatus
+                    );
                     Swal.fire(
                       "Requested!",
                       "Your request has been submitted.",

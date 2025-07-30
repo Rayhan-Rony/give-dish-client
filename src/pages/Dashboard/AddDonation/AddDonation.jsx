@@ -42,7 +42,7 @@ const AddDonation = () => {
         location: data.location,
         instructions: data.pickupInstructions,
         image: imageUrl,
-        status: "Pending",
+        status: "Available",
         created_at: new Date().toISOString(),
         description: data.description,
       };

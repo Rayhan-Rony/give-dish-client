@@ -47,6 +47,9 @@ const FeaturedDonations = () => {
                   <span className="badge badge-secondary text-black">
                     {item.status}
                   </span>
+                  <span className="badge badge-secondary text-black">
+                    {item.vStatus}
+                  </span>
                   <Link to={`/donations/${item._id}`}>
                     <button className="btn btn-sm btn-outline btn-primary">
                       Details

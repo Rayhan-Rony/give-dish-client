@@ -19,10 +19,10 @@ const ManageDonations = () => {
     },
   });
 
-  // Mutation to update verification status
-  const updateStatusMutation = useMutation({
-    mutationFn: async ({ id, status }) => {
-      const res = await axiosSecure.patch(`/donations/${id}`, { status });
+  // Mutation to update verification vStatus
+  const updatevStatusMutation = useMutation({
+    mutationFn: async ({ id, vStatus }) => {
+      const res = await axiosSecure.patch(`/donations/${id}`, { vStatus });
       return res.data;
     },
     onSuccess: () => {
@@ -30,15 +30,15 @@ const ManageDonations = () => {
     },
   });
 
-  const handleUpdate = (id, status) => {
+  const handleUpdate = (id, vStatus) => {
     Swal.fire({
-      title: `Are you sure you want to mark this as ${status}?`,
+      title: `Are you sure you want to mark this as ${vStatus}?`,
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: `Yes, ${status}`,
+      confirmButtonText: `Yes, ${vStatus}`,
     }).then((result) => {
       if (result.isConfirmed) {
-        updateStatusMutation.mutate({ id, status });
+        updatevStatusMutation.mutate({ id, vStatus });
       }
     });
   };
@@ -57,7 +57,7 @@ const ManageDonations = () => {
             <th>Restaurant</th>
             <th>Email</th>
             <th>Quantity</th>
-            <th>Status</th>
+            <th>vStatus</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -73,18 +73,18 @@ const ManageDonations = () => {
               <td>
                 <span
                   className={`badge ${
-                    donation.status === "Verified"
+                    donation.vStatus === "Verified"
                       ? "badge-success"
-                      : donation.status === "Rejected"
+                      : donation.vStatus === "Rejected"
                       ? "badge-error"
                       : "badge-warning"
                   }`}
                 >
-                  {donation.status || "Pending"}
+                  {donation.vStatus || "Pending"}
                 </span>
               </td>
               <td className="space-x-2">
-                {donation.status === "Pending" && (
+                {donation.vStatus === "Pending" && (
                   <>
                     <button
                       onClick={() => handleUpdate(donation._id, "Verified")}
