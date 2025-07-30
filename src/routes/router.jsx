@@ -31,6 +31,7 @@ import ManageRoleRequests from "../pages/Dashboard/ManageRoleRequests/ManageRole
 import ManageRequests from "../pages/Dashboard/ManageRequests/ManageRequests";
 import FeatureDonations from "../pages/Dashboard/FeatureDonations/FeatureDonations";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import AllDonations from "../pages/AllDonations/AllDonations";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <DonationDetails></DonationDetails>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "allDonations",
+        element: (
+          <PrivateRoute>
+            <AllDonations></AllDonations>
           </PrivateRoute>
         ),
       },
