@@ -1,7 +1,7 @@
 import React from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router"; // use react-router-dom instead of 'react-router'
+import { Link } from "react-router";
 import LoadingPage from "../../components/LoadingPage/LoadingPage";
 
 const FeaturedDonations = () => {
