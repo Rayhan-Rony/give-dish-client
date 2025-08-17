@@ -33,7 +33,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="bg-accent">
+    <div className="bg-accent sticky top-0 z-100">
       <div className="navbar  shadow-sm max-w-11/12 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
