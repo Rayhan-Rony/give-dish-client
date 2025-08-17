@@ -45,19 +45,11 @@ const router = createBrowserRouter([
       },
       {
         path: "donations/:id",
-        element: (
-          <PrivateRoute>
-            <DonationDetails></DonationDetails>
-          </PrivateRoute>
-        ),
+        element: <DonationDetails></DonationDetails>,
       },
       {
         path: "allDonations",
-        element: (
-          <PrivateRoute>
-            <AllDonations></AllDonations>
-          </PrivateRoute>
-        ),
+        element: <AllDonations></AllDonations>,
       },
     ],
   },
