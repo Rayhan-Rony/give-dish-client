@@ -32,6 +32,7 @@ import ManageRequests from "../pages/Dashboard/ManageRequests/ManageRequests";
 import FeatureDonations from "../pages/Dashboard/FeatureDonations/FeatureDonations";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import AllDonations from "../pages/AllDonations/AllDonations";
+import DashboardOverview from "../pages/Dashboard/DashboardOverview/DashboardOverview";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
     ),
     errorElement: <ErrorPage />,
     children: [
+      {
+        index: true,
+        element: <DashboardOverview></DashboardOverview>,
+      },
       {
         path: "restaurantProfile",
         Component: RestaurantProfile,

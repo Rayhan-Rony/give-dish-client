@@ -25,6 +25,7 @@ import GiveDishLogo from "../components/GiveDishLogo/GiveDishLogo";
 import { Link, Outlet } from "react-router";
 import useUserRole from "../hooks/useUserRole";
 import LoadingPage from "../components/LoadingPage/LoadingPage";
+import DashboardOverview from "../pages/Dashboard/DashboardOverview/DashboardOverview";
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
