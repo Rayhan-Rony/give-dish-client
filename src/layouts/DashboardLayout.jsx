@@ -26,9 +26,11 @@ import { Link, Outlet } from "react-router";
 import useUserRole from "../hooks/useUserRole";
 import LoadingPage from "../components/LoadingPage/LoadingPage";
 import DashboardOverview from "../pages/Dashboard/DashboardOverview/DashboardOverview";
+import useAuth from "../hooks/useAuth";
 
 const DashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { logOut } = useAuth();
   const { role, isLoading } = useUserRole();
   console.log(role);
 
@@ -251,7 +253,7 @@ const DashboardLayout = () => {
           )}
         </ul>
 
-        <div className="mt-10">
+        <div onClick={logOut} className="mt-10">
           <button className="flex items-center gap-2 hover:text-red-400 transition">
             <FaSignOutAlt /> Logout
           </button>
