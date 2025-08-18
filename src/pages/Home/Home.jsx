@@ -5,6 +5,7 @@ import ImpactStats from "./ImpactStats";
 import CommunityStories from "./CommunityStories";
 import LatestCharityRequests from "./LatestCharityRequests";
 import Newsletter from "../Newsletter/Newsletter";
+import AccordionSection from "../AccordionSection/AccordionSection";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <ImpactStats></ImpactStats>
       <CommunityStories></CommunityStories>
       <LatestCharityRequests></LatestCharityRequests>
+      <AccordionSection></AccordionSection>
       <Newsletter></Newsletter>
     </div>
   );
